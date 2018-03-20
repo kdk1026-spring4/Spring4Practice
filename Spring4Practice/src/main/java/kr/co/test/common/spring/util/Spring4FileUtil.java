@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import common.BaseObject;
 import common.util.ResponseUtil;
 import common.util.file.FileUtil;
+import common.util.file.NioFileUtil;
 import common.util.string.StringUtilsSub;
 
 public class Spring4FileUtil {
@@ -92,13 +93,13 @@ public class Spring4FileUtil {
 		}
 		
 		StringBuilder sb = new StringBuilder();
-		String fileExt = FileUtil.EXTENSION_SEPARATOR + FileUtil.getFileExtension(multipartFile.getOriginalFilename());
+		String fileExt = NioFileUtil.EXTENSION_SEPARATOR + NioFileUtil.getFileExtension(multipartFile.getOriginalFilename());
 		
 		sb.append(StringUtilsSub.getRandomString()).append(fileExt);
 		String saveFileNm = sb.toString();
 		
 		sb.setLength(0);
-		sb.append(destFilePath).append(FileUtil.FOLDER_SEPARATOR).append(saveFileNm);
+		sb.append(destFilePath).append(NioFileUtil.FOLDER_SEPARATOR).append(saveFileNm);
 		
 		FileVO fileVO = null;
 		
@@ -113,7 +114,7 @@ public class Spring4FileUtil {
 			fileVO.saveFileNm = saveFileNm;
 			fileVO.fileExt = fileExt;
 			fileVO.fileSize = multipartFile.getSize();
-			fileVO.fileSizeUnits = FileUtil.readableFileSize(fileVO.fileSize);
+			fileVO.fileSizeUnits = NioFileUtil.readableFileSize(fileVO.fileSize);
 			
 		} catch (IllegalStateException | IOException e) {
 			logger.error("", e);
@@ -132,7 +133,7 @@ public class Spring4FileUtil {
 		String downloadlFileNm = "";
 		
 		String destFilePath = fileVO.destFilePath;
-		destFilePath = (destFilePath.replaceAll("^(.*)(.$)", "$2").equals("/")) ? destFilePath : (destFilePath + FileUtil.FOLDER_SEPARATOR);
+		destFilePath = (destFilePath.replaceAll("^(.*)(.$)", "$2").equals("/")) ? destFilePath : (destFilePath + NioFileUtil.FOLDER_SEPARATOR);
 		
 		String saveFileNm = fileVO.saveFileNm;
 		String orignlFileNm = fileVO.orignlFileNm;

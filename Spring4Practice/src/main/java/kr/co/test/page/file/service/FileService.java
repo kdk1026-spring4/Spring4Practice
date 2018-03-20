@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import common.spring.resolver.ParamCollector;
-import kr.co.test.common.spring.util.Spring3FileUtil.FileVO;
+import kr.co.test.common.spring.util.Spring4FileUtil.FileVO;
 
 public interface FileService {
 	

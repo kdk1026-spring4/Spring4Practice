@@ -1,21 +1,19 @@
 package kr.co.test.rest.async.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import common.LogDeclare;
 import kr.co.test.rest.async.service.AsyncService;
 
-@Controller
+@RestController
 @RequestMapping("/async")
 public class AsyncController extends LogDeclare {
 
 	@Autowired
 	private AsyncService asyncService;
 	
-	@ResponseBody
 	@RequestMapping()
 	public String test() {
 		try {

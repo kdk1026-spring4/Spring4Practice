@@ -8,8 +8,8 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
@@ -30,7 +30,7 @@ public class LoginController extends LogDeclare {
 	private LoginService loginService;
 
 	@RsaKeyGenerator
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String loginForm(ParamCollector paramCollector, Model model, Authentication authentication) {
 		AuthenticatedUser user = null;
 		if (authentication != null) {
@@ -74,7 +74,7 @@ public class LoginController extends LogDeclare {
 		return sUri;
 	}
 
-	@RequestMapping(value = "/loginProc", method = RequestMethod.GET)
+	@GetMapping("/loginProc")
 	public String loginProc(ParamCollector paramCollector, Authentication authentication) {
 		AuthenticatedUser user = (AuthenticatedUser) authentication.getPrincipal();
 		logger.debug("user is {}", user);
@@ -96,7 +96,7 @@ public class LoginController extends LogDeclare {
 		return sb.toString();
 	}
 	
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@GetMapping("/logout")
 	public String logout(ParamCollector paramCollector, RedirectAttributes redirectAttributes) {
 		
 		if ( paramCollector.containsKey("expired") && paramCollector.getString("expired").equals("Y") ) {

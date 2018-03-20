@@ -3,9 +3,8 @@ package kr.co.test.rest.manager.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import common.spring.resolver.ParamCollector;
 import common.util.map.ResultSetMap;
@@ -14,14 +13,13 @@ import kr.co.test.common.Constants;
 import kr.co.test.page.manager.service.ManagerService;
 import kr.co.test.page.manager.service.ManagerValidtion;
 
-@Controller
+@RestController
 @RequestMapping("/api/manager")
 public class RestManagerController extends BaseController {
 
 	@Autowired
 	private ManagerService managerService;
 	
-	@ResponseBody
 	@RequestMapping("/list")
 	@Override
 	public ResultSetMap dataSetList(ParamCollector paramCollector) throws Exception {

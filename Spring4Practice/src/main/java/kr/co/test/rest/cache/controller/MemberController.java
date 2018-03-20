@@ -5,23 +5,21 @@ import java.util.List;
 import org.apache.commons.lang3.time.StopWatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import common.LogDeclare;
 import kr.co.test.rest.cache.service.MemberService;
 import kr.co.test.rest.cache.vo.Member;
 
-@Controller
+@RestController
 @RequestMapping("/cache")
 public class MemberController extends LogDeclare {
 
 	@Autowired
 	private MemberService memberService;
 	
-	@ResponseBody
 	@RequestMapping(value = "/members/cache", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Member> getCacheMembers() {
 		StopWatch stopWatch = new StopWatch();
@@ -36,7 +34,6 @@ public class MemberController extends LogDeclare {
 		return members;
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/members/remove", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String remove() {
 		memberService.processRemove();
@@ -44,7 +41,6 @@ public class MemberController extends LogDeclare {
 		return "Clear List Cache";
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/members/refresh", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String refresh() {
 		memberService.processRemove();
@@ -52,7 +48,6 @@ public class MemberController extends LogDeclare {
 		return "Refresh List Cache";
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/member/nocache/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Member getNoCacheMember(@PathVariable String name) {
 		StopWatch stopWatch = new StopWatch();
@@ -67,7 +62,6 @@ public class MemberController extends LogDeclare {
 		return member;
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/member/cache/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Member getCacheMember(@PathVariable String name) {
 		StopWatch stopWatch = new StopWatch();
@@ -82,7 +76,6 @@ public class MemberController extends LogDeclare {
 		return member;
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/member/remove/{name}", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String remove(@PathVariable String name) {
 		memberService.processRemove(name);
@@ -90,7 +83,6 @@ public class MemberController extends LogDeclare {
 		return "Clear Key Cache";
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/members/refresh/{name}", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String refresh(@PathVariable String name) {
 		memberService.processRemove();

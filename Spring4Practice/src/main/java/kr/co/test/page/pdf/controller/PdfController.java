@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -45,7 +46,7 @@ public class PdfController extends LogDeclare {
 		return "pdfListView";
 	}
 	
-	@RequestMapping(value = "/pdf_upload", method = RequestMethod.POST)
+	@PostMapping("/pdf_upload")
 	public String pdfUpload(ParamCollector paramCollector, RedirectAttributes redirectAttributes) {
 		long nLimitSize = Long.parseLong(fileProp.getProperty("file.limit.size"));
 		

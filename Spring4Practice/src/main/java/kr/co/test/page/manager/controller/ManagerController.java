@@ -6,9 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -40,7 +41,7 @@ public class ManagerController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	@Override
 	public String list(ParamCollector paramCollector) throws Exception {
 		return "admin/manager/manager";
@@ -53,7 +54,7 @@ public class ManagerController extends BaseController {
 	 * @throws Exception
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/dataSetList", method = RequestMethod.POST)
+	@PostMapping("/dataSetList")
 	@Override
 	public ResultSetMap dataSetList(ParamCollector paramCollector) throws Exception {
 		ResultSetMap resMap = new ResultSetMap();
@@ -79,7 +80,7 @@ public class ManagerController extends BaseController {
 	 * @throws Exception
 	 */
 	@RsaKeyGenerator
-	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	@GetMapping("/write")
 	@Override
 	public String write(ParamCollector paramCollector, Model model) throws Exception {
 		@SuppressWarnings("unchecked")
@@ -96,7 +97,7 @@ public class ManagerController extends BaseController {
 	 * @throws Exception
 	 */
 	@RsaDecrypt
-	@RequestMapping(value = "/writeProc", method = RequestMethod.POST)
+	@PostMapping("/writeProc")
 	@Override
 	public String writeProc(ParamCollector paramCollector, RedirectAttributes redirectAttributes) throws Exception {
 		ResultSetMap resMap = new ResultSetMap();
@@ -165,7 +166,7 @@ public class ManagerController extends BaseController {
 	 * @throws Exception
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/removeProc", method = RequestMethod.POST)
+	@PostMapping("/removeProc")
 	@Override
 	public ResultSetMap removeProc(ParamCollector paramCollector, @RequestParam List<String> items) throws Exception {
 		ResultSetMap resMap = new ResultSetMap();
@@ -204,7 +205,7 @@ public class ManagerController extends BaseController {
 	 * @throws Exception
 	 */
 	@RsaKeyGenerator
-	@RequestMapping(value = "/modify/{username}", method = RequestMethod.GET)
+	@GetMapping("/modify/{username}")
 	public String modify(ParamCollector paramCollector, Model model, @PathVariable String username) throws Exception {
 		@SuppressWarnings("unchecked")
 		Map<String, Object> rsaPublicMap = (Map<String, Object>) paramCollector.get(Constants.RSA_PUBLIC);
@@ -226,7 +227,7 @@ public class ManagerController extends BaseController {
 	 * @throws Exception
 	 */
 	@RsaDecrypt
-	@RequestMapping(value = "/modifyProc", method = RequestMethod.POST)
+	@PostMapping("/modifyProc")
 	@Override
 	public String modifyProc(ParamCollector paramCollector, RedirectAttributes redirectAttributes, Model model) throws Exception {
 		ResultSetMap resMap = new ResultSetMap();

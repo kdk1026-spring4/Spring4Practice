@@ -17,7 +17,7 @@ import com.lowagie.text.pdf.parser.PdfTextExtractor;
 
 import common.LogDeclare;
 import common.spring.resolver.ParamCollector;
-import kr.co.test.common.spring.util.Spring3FileUtil.FileVO;
+import kr.co.test.common.spring.util.Spring4FileUtil.FileVO;
 import kr.co.test.page.excel.service.ExcelService;
 import kr.co.test.page.file.service.FileService;
 

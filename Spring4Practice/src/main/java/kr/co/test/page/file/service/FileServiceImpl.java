@@ -15,8 +15,8 @@ import common.LogDeclare;
 import common.spring.resolver.ParamCollector;
 import common.util.ObjectUtil;
 import common.util.map.MapUtil;
-import kr.co.test.common.spring.util.Spring3FileUtil;
-import kr.co.test.common.spring.util.Spring3FileUtil.FileVO;
+import kr.co.test.common.spring.util.Spring4FileUtil;
+import kr.co.test.common.spring.util.Spring4FileUtil.FileVO;
 
 @Service
 public class FileServiceImpl extends LogDeclare implements FileService {
@@ -37,7 +37,7 @@ public class FileServiceImpl extends LogDeclare implements FileService {
 		
 		String sDestFilePath = fileProp.getProperty("file.upload.path");
 		
-		FileVO fileVO = Spring3FileUtil.uploadFile(multipartFile, sDestFilePath);
+		FileVO fileVO = Spring4FileUtil.uploadFile(multipartFile, sDestFilePath);
 		
 		if (fileVO != null) {
 			Map<String, Object> fileMap = ObjectUtil.convertObjectToMap(fileVO);
@@ -57,7 +57,7 @@ public class FileServiceImpl extends LogDeclare implements FileService {
 		
 		fileVO.destFilePath = sDestFilePath;
 		
-		Spring3FileUtil.downloadFile(fileVO, paramCollector.getRequest(), response);
+		Spring4FileUtil.downloadFile(fileVO, paramCollector.getRequest(), response);
 	}
 	
 }

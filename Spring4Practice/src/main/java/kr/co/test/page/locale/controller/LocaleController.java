@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import common.LogDeclare;
 import common.spring.resolver.ParamCollector;
@@ -23,7 +23,7 @@ public class LocaleController extends LogDeclare {
 	@Autowired
 	private DatabaseMessageSource databaseMessageSource; 
 
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String locale(ParamCollector paramCollector, Model model, Locale locale) {
 		
 		logger.debug("lang is {}", locale.getLanguage());
@@ -34,7 +34,7 @@ public class LocaleController extends LogDeclare {
 		return "test/locale/locale";
 	}
 	
-	@RequestMapping(value = "db", method = RequestMethod.GET)
+	@GetMapping("db")
 	public String localeDb(ParamCollector paramCollector, Model model, Locale locale) {
 		
 		logger.debug("lang is {}", locale.getLanguage());

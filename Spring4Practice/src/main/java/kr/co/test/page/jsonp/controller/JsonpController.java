@@ -6,8 +6,8 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import common.LogDeclare;
@@ -18,21 +18,21 @@ import common.util.json.JacksonUtil;
 @RequestMapping("/jsonp")
 public class JsonpController extends LogDeclare {
 	
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	@GetMapping("/test")
 	public String test(ParamCollector paramCollector, Model model) {
 		model.addAttribute("message", "Hello JSONP");
 		
 		return "test/jsonp/jsonp";
 	}
 	
-	@RequestMapping(value = "/test2", method = RequestMethod.GET)
+	@GetMapping("/test2")
 	public String test2(ParamCollector paramCollector, Model model) {
 		model.addAttribute("message", "Hello JSONP");
 		
 		return "test/jsonp/jsonp2";
 	}
 
-	@RequestMapping(value = "/jsonp_view", method = RequestMethod.GET)
+	@GetMapping("/jsonp_view")
 	public String jsonpView(ParamCollector paramCollector, ModelMap model) {
 		String sCallback = paramCollector.getRequest().getParameter("stone");
 		String sLastName = paramCollector.getRequest().getParameter("lastName");
@@ -45,7 +45,7 @@ public class JsonpController extends LogDeclare {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/res", method = RequestMethod.GET)
+	@GetMapping("/res")
 	public String res(ParamCollector paramCollector, ModelMap model) {
 		String sCallback = paramCollector.getRequest().getParameter("stone");
 		String sLastName = paramCollector.getRequest().getParameter("lastName");

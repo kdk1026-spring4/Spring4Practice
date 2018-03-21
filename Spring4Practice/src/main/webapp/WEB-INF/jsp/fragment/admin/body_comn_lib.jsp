@@ -8,7 +8,7 @@
 	<script src="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 	
 	<!-- Custom scripts for all pages-->
-	<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/commonJquery.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/cookieUtils.js"></script>
 	
 	<jsp:include page="/WEB-INF/jsp/fragment/rsa_lib.jsp" flush="false" />

@@ -35,12 +35,19 @@ $.extend({
 		var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
 		return raw ? parseInt(raw[2], 10) : false;
 	},
-	// Null, 공백 체크
-	isBlank: function(strVal) {
-	    if (strVal == null || strVal.replace(/ /gi,'') == '') {
-	        return true;
-	    }
-	    return false;
+	/**
+	 * 이미지 미리보기
+	 */
+	previewImage: function($fileElement, $imgElement) {
+		$fileElement.change(function() {
+			if (window.FileReader) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$imgElement.src("src", e.target.result);
+				}
+				reader.readAsDataURL(fileElement.files[0]);
+			}
+		});
 	},
 	/**
 	 * JSON String -> Object 변환
@@ -196,12 +203,15 @@ $.extend({
 			dataType: 'json',
 			success: function(data) {
 				retObj = data;
+			},
+			error: function(res, status) {
+				retObj = res.responseJSON;
 			}
 		});
 		return retObj;
 	},
 	/**
-	 * ajax json 공통
+	 * ajax 공통 JSON
 	 */
 	ajaxSyncJson: function(url, headers, param) {
 		var retObj = {};
@@ -220,6 +230,74 @@ $.extend({
 			data: param,
 			success: function(data) {
 				retObj = data;
+			},
+			error: function(res, status) {
+				retObj = res.responseJSON;
+			}
+		});
+		return retObj;
+	},
+	/**
+	 * ajax 공통 FILE
+	 */
+	ajaxSyncFile: function(url, headers, file) {
+		var retObj = {};
+		var data = new FormData();
+		data.append("file", file);
+		
+		$.ajaxSetup({
+			traditional: true,
+			cache: false,
+			async: false,
+			headers: headers
+		});
+		
+		$.ajax({
+			url: url,
+			type: 'post',
+			enctype: 'multipart/form-data',
+			processData: false,
+			contentType: false,
+			data: data,
+			success: function(data) {
+				retObj = data;
+			},
+			error: function(res, status) {
+				retObj = res.responseJSON;
+			}
+		});
+		return retObj;
+	},
+	/**
+	 * ajax 공통 FILE Security
+	 */
+	ajaxSyncFileSec: function(url, headers, csrfToken, csrfHeader, file) {
+		var retObj = {};
+		var data = new FormData();
+		data.append("file", file);
+		
+		$.ajaxSetup({
+			traditional: true,
+			cache: false,
+			async: false,
+			headers: headers
+		});
+		
+		$.ajax({
+			url: url,
+			type: 'post',
+			enctype: 'multipart/form-data',
+			processData: false,
+			contentType: false,
+			data: data,
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(header, token);
+			},
+			success: function(data) {
+				retObj = data;
+			},
+			error: function(res, status) {
+				retObj = res.responseJSON;
 			}
 		});
 		return retObj;

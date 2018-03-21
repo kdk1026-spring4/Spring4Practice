@@ -16,7 +16,7 @@
 </head>
 <body>
 	<script src="${pageContext.request.contextPath}/webjars/jquery/3.2.1/dist/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/commonJquery.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/fileUtils.js"></script>
 
 	<div><a href="${contextPath}/pdf/pdf_down">PDF 다운</a></div>

@@ -18,25 +18,25 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
 	
 	<!-- Spring Framework -->
     <logger name="org.springframework" level="info" />
+    
     <logger name="org.apache.ibatis.session" level="debug" />
-     
+    
     <!-- SQL Loggin -->
     <logger name="java.sql" level="error" />
     <logger name="jdbc.sqlonly" level="off" />
 	<Logger name="jdbc.sqltiming" level="info" />
  	<logger name="jdbc.audit" level="off" /> 
  	<logger name="jdbc.resultset" level="off"/> 
- 	<logger name="jdbc.resultsettable" level="warn"/> 
- 	<logger name="jdbc.connection" level="info"/>
+ 	<logger name="jdbc.resultsettable" level="debug"/> 
+ 	<logger name="jdbc.connection" level="info"/> 
  	
  	<logger name="com.zaxxer.hikari" level="info" />
- 	
  	
  	<!-- Package -->
  	<logger name="kr.co.test" level="debug" additivity="false">
  		<appender-ref ref="console"/>
  	</logger>
- 	
+
     <root level="debug">
         <appender-ref ref="console"/>
     </root>

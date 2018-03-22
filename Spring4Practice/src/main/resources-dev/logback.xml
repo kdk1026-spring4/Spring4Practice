@@ -17,9 +17,10 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
     </appender>
 	
 	<!-- Spring Framework -->
-    <logger name="org.springframework" level="info" />
+    <logger name="org.springframework" level="error" />
     
-    <logger name="org.apache.ibatis.session" level="debug" />
+    <logger name="org.mybatis.spring.SqlSessionUtils" level="debug" />
+    <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager" level="debug" />
     
     <!-- SQL Loggin -->
     <logger name="java.sql" level="error" />
@@ -30,14 +31,14 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
  	<logger name="jdbc.resultsettable" level="debug"/> 
  	<logger name="jdbc.connection" level="info"/> 
  	
- 	<logger name="com.zaxxer.hikari" level="info" />
+ 	<logger name="com.zaxxer.hikari" level="error" />
  	
  	<!-- Package -->
  	<logger name="kr.co.test" level="debug" additivity="false">
  		<appender-ref ref="console"/>
  	</logger>
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="console"/>
     </root>
     

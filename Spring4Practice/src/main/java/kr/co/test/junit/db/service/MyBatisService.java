@@ -17,4 +17,8 @@ public interface MyBatisService {
 	
 	public void removeUser(ParamCollector paramCollector);
 	
+	public int manualTransaction1(ParamCollector paramCollector);
+	
+	public int manualTransaction2(ParamCollector paramCollector);
+	
 }

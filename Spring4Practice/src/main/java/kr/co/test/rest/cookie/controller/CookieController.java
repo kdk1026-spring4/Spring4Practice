@@ -37,7 +37,7 @@ public class CookieController extends LogDeclare {
 	
 	@RequestMapping("/remove")
 	public String remove(ParamCollector paramCollector, HttpServletResponse response) {
-		CookieUtilVer2.removeCookie(paramCollector.getRequest(), response, TEST_COOKIE_KEY);
+		CookieUtilVer2.removeCookie(response, TEST_COOKIE_KEY);
 		
 		return "Cookie Remove Test";
 	}

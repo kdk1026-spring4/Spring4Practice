@@ -30,7 +30,7 @@ public class HelloController {
 	@RequestMapping("/hello_thyme")
 	public String helloThyme(Model model) {
 		model.addAttribute(MESSAGE, "Thymeleaf");
-		return "thymeleaf/hello_thyme";
+		return "hello_thyme";
 	}
 	
 }

@@ -29,7 +29,7 @@ public class TemplateEngineConfig {
 	@Bean
 	public SpringResourceTemplateResolver templateResolver() {
 		SpringResourceTemplateResolver srtr = new SpringResourceTemplateResolver();
-		srtr.setPrefix("/WEB-INF/views/thymeleaf/");
+		srtr.setPrefix("/WEB-INF/views/");
 		srtr.setSuffix(".html");
 		srtr.setTemplateMode("HTML5");
 		srtr.setCacheable(false);
@@ -45,7 +45,7 @@ public class TemplateEngineConfig {
 	public ThymeleafViewResolver thymeleafViewResolver() {
 		ThymeleafViewResolver tvr = new ThymeleafViewResolver();
 		tvr.setTemplateEngine( templateEngine() );
-//		tvr.setViewNames( new String[] {"*thymeleaf/*"} );
+		tvr.setViewNames( new String[] {"*thymeleaf/*"} );
 		tvr.setOrder(5);
 		return tvr;
 	}

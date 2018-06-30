@@ -80,8 +80,8 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
-		int maxFileSize = 20971520;			// 20MB
-	    int maxRequestSize = maxFileSize;
+		int maxFileSize = 5242880;			// 5MB
+	    int maxRequestSize = 20971520;		// 20MB
 	    int fileSizeThreshold = 0;
 
 		MultipartConfigElement multipartConfigElement =

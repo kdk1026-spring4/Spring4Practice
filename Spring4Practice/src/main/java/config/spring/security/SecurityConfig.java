@@ -124,6 +124,7 @@ public class SecurityConfig {
 		@Override
 		public void configure(WebSecurity web) throws Exception {
 			web.ignoring()
+				.antMatchers("/test")
 				.antMatchers("/resources/**")
 				.antMatchers("/webjars/**")
 				.antMatchers("/console/**");

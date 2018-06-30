@@ -11,7 +11,6 @@ import javax.servlet.ServletRegistration;
 import javax.servlet.ServletRegistration.Dynamic;
 
 import org.h2.server.web.WebServlet;
-import org.sitemesh.config.ConfigurableSiteMeshFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -69,14 +68,14 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		
 		XssEscapeServletFilter xssEscapeServletFilter = new XssEscapeServletFilter();
 		
-		ConfigurableSiteMeshFilter sitemesh = new ConfigurableSiteMeshFilter();
+		SiteMeshFilter sitemeshFilter = new SiteMeshFilter();
 		
 		// XXX : SecurityConfig 의 http.cors().configurationSource 참고 
 // 		CorsFilter corsFilter = new CorsFilter();
 		
 		SessionCookieFilter sessionCookieFilter = new SessionCookieFilter();
 
-		return new Filter[] {encodingFilter, xssEscapeServletFilter, sitemesh, sessionCookieFilter};
+		return new Filter[] {encodingFilter, xssEscapeServletFilter, sitemeshFilter, sessionCookieFilter};
 	}
 
 	@Override

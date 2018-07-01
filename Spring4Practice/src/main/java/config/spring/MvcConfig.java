@@ -159,7 +159,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public ContentNegotiatingViewResolver contentNegotiatingViewResolver() {
 		ContentNegotiatingViewResolver cnv = new ContentNegotiatingViewResolver();
-		cnv.setContentNegotiationManager( contentNegotiationManager() );
+		
+		cnv.setContentNegotiationManager( this.contentNegotiationManager() );
 		cnv.setDefaultViews(this.defaultViews());
 		cnv.setOrder(1);
 		return cnv;

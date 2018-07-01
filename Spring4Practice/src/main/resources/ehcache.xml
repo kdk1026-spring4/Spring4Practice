@@ -3,7 +3,8 @@
 	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd" 
 	updateCheck="false">
 	
-	<diskStore path="java.io.temdir"/>
+	<!-- <diskStore path="java.io.temdir"/> -->
+	<diskStore path="C:/tmpdir"/>
 	
 	<!-- defaultCache는 캐시 사용시 다른 적절한 캐시를 찾을수 없을 때 사용 -->
 	<defaultCache

@@ -10,7 +10,6 @@ import java.util.Map;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
@@ -48,7 +47,6 @@ import config.spring.mvc.TilesConfig;
 import config.spring.mvc.ViewConfig;
 import kr.co.test.common.spring.util.Jaxb2MarshallerCustom;
 
-@Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"kr.co.test"},
 	useDefaultFilters = false,

@@ -1,7 +1,6 @@
 package config.spring.mvc;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -9,7 +8,6 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 @SuppressWarnings("deprecation")
-@Configuration
 public class TemplateEngineConfig {
 
 	@Bean

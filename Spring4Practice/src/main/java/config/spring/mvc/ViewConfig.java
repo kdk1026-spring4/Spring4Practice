@@ -1,7 +1,6 @@
 package config.spring.mvc;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import kr.co.test.common.spring.view.FileDownloadView;
@@ -10,7 +9,6 @@ import kr.co.test.common.spring.view.PdfListView;
 import kr.co.test.common.spring.view.excel.ExcelListView;
 import kr.co.test.common.spring.view.excel.JxlsListView;
 
-@Configuration
 public class ViewConfig {
 	
 	@Bean

@@ -32,10 +32,6 @@ import kr.co.test.rest.login.security.handler.RestLogoutSuccessHandler;
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig {
 	
-	protected SecurityConfig() {
-		super();
-	}
-	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -45,6 +41,10 @@ public class SecurityConfig {
 	@Configuration
 	public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 		
+		public ApiWebSecurityConfigurationAdapter() {
+			super();
+		}
+
 		@Override
 		public void configure(WebSecurity web) throws Exception {
 			web.ignoring()
@@ -93,13 +93,15 @@ public class SecurityConfig {
 			return jwtAuthenticationTokenFilter;
 		}
 	}
-	
 
 	@Order(2)
 	@Configuration
-	@EnableGlobalMethodSecurity(securedEnabled = true)
 	public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 		
+		public FormLoginWebSecurityConfigurerAdapter() {
+			super();
+		}
+
 		private static final String LOGIN_PAGE = "/admin/login";
 		
 		@Autowired @Qualifier("h2DataSource")
@@ -124,7 +126,6 @@ public class SecurityConfig {
 		@Override
 		public void configure(WebSecurity web) throws Exception {
 			web.ignoring()
-				.antMatchers("/test")
 				.antMatchers("/resources/**")
 				.antMatchers("/webjars/**")
 				.antMatchers("/console/**");

@@ -2,6 +2,7 @@ package kr.co.test.rest.login.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +18,8 @@ public class RestLoginController extends LogDeclare {
 	@Autowired
 	private RestLoginService restLoginService;
 	
-	@RequestMapping("/auth")
-	public ResultSetMap auth(ParamCollector paramCollector) {
+	@PostMapping("/auth")
+	public ResultSetMap auth(ParamCollector paramCollector) throws Exception {
 		return restLoginService.processAuth(paramCollector);
 	}
 	

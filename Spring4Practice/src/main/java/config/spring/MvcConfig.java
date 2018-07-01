@@ -29,7 +29,6 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.View;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -155,12 +154,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		jaxbView.setMarshaller( jaxbMarshaller() );
 		jaxbView.setModelKey("xmlData");
 		return jaxbView;
-	}
-	
-	@Override
-	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-		configurer.ignoreAcceptHeader(true);
-		configurer.defaultContentType(MediaType.TEXT_HTML);
 	}
 	
 	@Bean

@@ -202,7 +202,7 @@ public class SecurityConfig {
 		
 		@Override
 		protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-			auth.authenticationProvider( this.pageAuthenticationProvider );
+			auth.authenticationProvider( pageAuthenticationProvider );
 		}
 	}
 

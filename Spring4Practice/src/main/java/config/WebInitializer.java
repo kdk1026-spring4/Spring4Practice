@@ -11,6 +11,7 @@ import javax.servlet.ServletRegistration;
 import javax.servlet.ServletRegistration.Dynamic;
 
 import org.h2.server.web.WebServlet;
+import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -35,6 +36,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		super.onStartup(servletContext);
 		servletContext.addListener(new SessionListener());
+		servletContext.addListener(new RequestContextListener());
 		
 		servletContext.setInitParameter("webAppRootKey", "webapp.root");
 

@@ -15,6 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -23,6 +24,7 @@ import common.util.crypto.RsaCryptoUtil;
 import kr.co.test.page.login.model.AuthenticatedUser;
 import kr.co.test.page.login.service.UserService;
 
+@Component
 public class PageAuthenticationProvider extends LogDeclare implements AuthenticationProvider {
 	
 	@Autowired
@@ -69,7 +71,8 @@ public class PageAuthenticationProvider extends LogDeclare implements Authentica
 	}
 	
 	private String decryptRsa(String password) {
-		HttpServletRequest request	= ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		ServletRequestAttributes attr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+		HttpServletRequest request	= attr.getRequest();
 		HttpSession session = request.getSession(false);
 		
 		PrivateKey privateKey = RsaCryptoUtil.Session.getPrivateKeyInSession(session);

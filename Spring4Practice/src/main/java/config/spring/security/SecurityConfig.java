@@ -107,6 +107,9 @@ public class SecurityConfig {
 		@Autowired @Qualifier("h2DataSource")
         private DataSource h2DataSource;
 		
+		@Autowired
+		private PageAuthenticationProvider pageAuthenticationProvider;
+		
 		/*
 		@Autowired
 		DataSource dataSource;
@@ -199,7 +202,7 @@ public class SecurityConfig {
 		
 		@Override
 		protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-			auth.authenticationProvider(new PageAuthenticationProvider());
+			auth.authenticationProvider( this.pageAuthenticationProvider );
 		}
 	}
 

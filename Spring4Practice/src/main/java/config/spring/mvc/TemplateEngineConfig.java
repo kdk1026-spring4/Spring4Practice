@@ -2,20 +2,21 @@ package config.spring.mvc;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
-@SuppressWarnings("deprecation")
 public class TemplateEngineConfig {
 
+	// XXX : deprecated
+	/*
 	@Bean
 	public VelocityConfigurer velocityConfigurer() {
 		VelocityConfigurer vc = new VelocityConfigurer();
 		vc.setResourceLoaderPath("/WEB-INF/views/vm/");
 		return vc;
 	}
+	*/
 	
 	@Bean
 	public FreeMarkerConfigurer freeMarkerConfigurer() {

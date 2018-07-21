@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+		System.out.println("=== " + id);
 		AuthenticatedUser user = userMapper.selectUser(id);
 		user.setAuthorities(this.getAuthorities(id));
 		

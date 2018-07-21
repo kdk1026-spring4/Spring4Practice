@@ -79,12 +79,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 		marshallingConverter.setUnmarshaller( xStreamMarshaller() );
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.beanName();
 		registry.tiles();
-		registry.velocity();
+//		registry.velocity();
 		registry.freeMarker();
 		registry.jsp("/WEB-INF/jsp/", ".jsp");
 	}
